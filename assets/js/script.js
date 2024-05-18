@@ -36,11 +36,11 @@ function createProjectCard(project) {
 
   // TODO: Create a new card element and add the classes `card`, `project-card`, `draggable`, and `my-3`. Also add a `data-project-id` attribute and set it to the project id.
   const taskCard = $("<div>");
-  taskCard.addClass('card, project-card,draggable ,my-3');
+  taskCard.addClass('card project-card draggable my-3');
   taskCard.attr('data-project-id', project.id)
   // TODO: Create a new card header element and add the classes `card-header` and `h4`. Also set the text of the card header to the project name.
   const header= $("<h4>");
-  header.addClass("card-header, h4");
+  header.addClass("card-header h4");
   header.text(project.name);
   // TODO: Create a new card body element and add the class `card-body`.
   const bodyDiv = $("<div>")
@@ -55,7 +55,7 @@ function createProjectCard(project) {
   due.text(project.dueDate);
   // TODO: Create a new button element and add the classes `btn`, `btn-danger`, and `delete`. Also set the text of the button to "Delete" and add a `data-project-id` attribute and set it to the project id.
   const btn =$("<button>");
-  btn.addClass("btn , btn-danger, delete");
+  btn.addClass("btn  btn-danger delete");
   btn.text("Delete")
   btn.attr("data-project-id", project.id);
 
@@ -108,14 +108,14 @@ function printProjectData() {
 
   // TODO: Loop through projects and create project cards for each status
   for (let project of projects) {
-    if(project.status = "to-do"){
+    if(project.status === "to-do"){
       todoList.append(createProjectCard(project));
+    
+    }else if (project.status === "in-progress"){
+      inProgressList.append(createProjectCard(project));
+    }else if(project.status === "done"){
+      doneList.append(createProjectCard(project));
     }
-    // }else if (project.status = "to-do"){
-    //   inProgressList.append(createProjectCard(project));
-    // }else if(project.status = "to-do"){
-    //   doneList.append(createProjectCard(project));
-    // }
   }
 
   // ? Use JQuery UI to make task cards draggable
